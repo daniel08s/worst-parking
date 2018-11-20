@@ -4,7 +4,7 @@
   "description": "Worst Parking App",
   "main": "index.js",
   "scripts": {
-    
+    "start": "npm start --prefix server nodemon index.js"
   },
   "author": "DNS",
   "license": "MIT"
