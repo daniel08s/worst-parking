@@ -4,6 +4,7 @@
 - User:
   - Username
   - Password
+  - Email
   - Join date
   - Favorites
 
@@ -13,7 +14,6 @@
   - Location
   - Picture
   - Brand
-  - Model
   - Tags
   - Likes
   - Submit date

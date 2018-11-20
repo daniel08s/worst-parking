@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+
 require('dotenv').config({ path: 'variables.env' });
+const User = require('./models/User');
+const Car = require('./models/Car');
 
 // Connects to database
 mongoose
