@@ -1,7 +1,8 @@
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
 const User = require('../models/User');
 const Car = require('../models/Car');
-
-const jwt = require('jsonwebtoken');
 
 const createToken = (user, secret, expiresIn) => {
   const { username, email } = user;
