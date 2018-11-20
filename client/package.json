@@ -1,0 +1,10 @@
+{
+  "name": "worst-parking-client",
+  "version": "1.0.0",
+  "description": "Worst Parking Client",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "DNS",
+  "license": "MIT"
+}
