@@ -10,7 +10,8 @@
   },
   "author": "DNS",
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "concurrently": "^4.1.0"
   }
 }
