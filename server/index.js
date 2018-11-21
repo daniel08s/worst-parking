@@ -20,6 +20,7 @@ ObjectId.prototype.valueOf = function() {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  path: '/graphql',
   playground: {
     endpoint: `http://localhost:${PORT}/graphql`,
     // List of possible settings below
@@ -30,10 +31,10 @@ const server = new ApolloServer({
       'editor.fontFamily': `'Source Code Pro', 'Consolas', 'Inconsolata', 'Droid Sans Mono', 'Monaco', monospace`,
       'editor.theme': 'dark', // possible values: 'dark', 'light'
       'editor.reuseHeaders': true,
-      'request.credentials': 'omit', // possible values: 'omit', 'include', 'same-origin'
+      'request.credentials': 'include', // possible values: 'omit', 'include', 'same-origin'
       'tracing.hideTracingResponse': true,
     }
-  }
+  },
 });
 
 // Initializes express server
@@ -53,8 +54,17 @@ app.use(async (req, res, next) => {
   next();
 });
 
-// Setup GraphQL Middleware
-server.applyMiddleware({ app });
+// Cross Origin Resource Sharing options to be used by the server
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true
+};
+
+// Setup Apollo/Express Middleware
+server.applyMiddleware({
+  app,
+  cors: corsOptions,
+});
 
 // Connects to database
 mongoose
