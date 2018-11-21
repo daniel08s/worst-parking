@@ -1,7 +1,8 @@
 import React from 'react';
 import { Formik } from 'formik';
 
-import { RegisterForm, Input } from '../Styles';
+import { RegisterForm, Input, Button } from '../Styles';
+import { REGISTER_USER } from '../../queries';
 
 const initialValues = {
   username: "",
@@ -32,6 +33,7 @@ export default () => {
               placeholder="Username"
               type="text"
               onChange={handleChange}
+              required
             />
             <Input 
               name="email"
@@ -44,13 +46,21 @@ export default () => {
               name="password"
               placeholder="Password"
               onChange={handleChange}
+              required
             />
             <Input 
               type="password"
               name="passwordConfirmation"
               placeholder="Confirm password"
               onChange={handleChange}
+              required
             />
+          <Button
+            type="submit"
+            disabled={true}
+          >
+            Submit
+          </Button>
           </RegisterForm>
         );
       }}
