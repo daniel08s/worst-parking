@@ -20,18 +20,18 @@ const App = () => (
     <Query query={GET_ALL_USERS}>
       {({ data, loading, error }) => {
         if (loading) return <div>Loading...</div>
-        if (error) return <div>Error: {error.networkError.message}</div>
+        if (error) return <div>{error.message}</div>
         console.log(data);
         return (
           <>
-          <h2>Users:</h2>
-          <UserList>
-            {data.getAllUsers.map(user => (
-              <UserInfo key={user._id} >
-                {user.username} - {user.email}
-              </UserInfo>
-            ))}
-          </UserList>
+            <h2>Users:</h2>
+            <UserList>
+              {data.getAllUsers.map(user => (
+                <UserInfo key={user._id} >
+                  {user.username} - {user.email}
+                </UserInfo>
+              ))}
+            </UserList>
           </>
         );
       }}
