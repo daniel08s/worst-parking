@@ -1,11 +1,18 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const SigninForm = styled.form`
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr;
+  grid-gap: 10px;
+  justify-items: center;
+  justify-content: center;  
 `;
 
 export const RegisterForm = styled.form`
   display: grid;
   grid-template-columns: auto;
+  grid-template-rows: 1fr;
   grid-gap: 10px;
   justify-items: center;
   justify-content: center;  
@@ -20,6 +27,8 @@ export const Input = styled.input`
   border-left: 3px solid;
   border-radius: 5px;
   transition: border-color .5s ease-out;
+  align-self: center;
+  justify-self: center;
 
   :required {
     border-left-color: palegreen;
@@ -33,7 +42,7 @@ export const Input = styled.input`
     border-left-color: salmon;
   }
 
-  :required:focus:valid {
+  /* :required:focus:valid {
     background: url("/images/check.svg") no-repeat 95% 50%;
     background-size: 25px;
   }
@@ -41,7 +50,7 @@ export const Input = styled.input`
   :focus:invalid {
     background: url("/images/tnt.svg") no-repeat 95% 50%;
     background-size: 25px;
-  }
+  } */
 `;
 
 export const Button = styled.button`
@@ -60,10 +69,12 @@ export const Button = styled.button`
 
   :hover {
     border-color: rgba(30,200,30,1);
+    cursor: pointer;
   }
-  
+
   :disabled:hover {
     border-color: rgba(200,50,50,1);
+    cursor: not-allowed;
   }
 
   @media all and (max-width:30em) {

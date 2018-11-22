@@ -1,45 +1,53 @@
-import React from 'react';
-import { Formik } from 'formik';
+import React, { useState } from 'react';
+import { Mutation } from 'react-apollo';
 
-import { SigninForm, Input } from '../Styles';
-
-const initialValues = {
-  username: "",
-  password: "",
-};
+import { SigninForm, Input, Button } from '../Styles';
+import { SIGNIN_USER } from '../../queries';
+import Error from '../Error';
 
 export default () => {
-  return (
-    <Formik
-      initialValues={initialValues}
-      /* validate={{}}
-      onSubmit={} */
-    >
-      {props => {
-        const {
-          isSubmitting,
-          errors,
-          handleChange,
-          handleSubmit,
-        } = props;
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-        return (
-          <SigninForm>
-            <Input 
-              name="username"
-              placeholder="Username"
-              type="text"
-              onChange={handleChange}
-            />
-            <Input 
-              type="password"
-              name="password"
-              placeholder="Password"
-              onChange={handleChange}
-            />
-          </SigninForm>
-        );
-      }}
-    </Formik>
+  const handleSubmit = event => {
+    event.preventDefault();
+  };
+
+  const validate = () => username && password ? true : false;
+
+  return (
+    <Mutation
+      mutation={SIGNIN_USER}
+      variables={{ username, password }}
+    >
+      {({ loading, data, error }) => (
+        <SigninForm onSubmit={handleSubmit}>
+          <Input 
+            name="username"
+            placeholder="Username"
+            type="text"
+            onChange={e => setUsername(e.target.value)}
+            value={username}
+            required
+          />
+          <Input 
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={e => setPassword(e.target.value)}
+            value={password}
+            required
+          />
+          <Button
+            type="submit"
+            disabled={loading || !validate()}
+            onSubmit={handleSubmit}
+          >
+            Login
+          </Button>
+          {error &&  <Error error={error} />}
+        </SigninForm>
+      )}
+    </Mutation>
   );
 };
