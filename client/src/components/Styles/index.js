@@ -29,6 +29,7 @@ export const Input = styled.input`
   transition: border-color .5s ease-out;
   align-self: center;
   justify-self: center;
+  padding-left: 3px;
 
   :required {
     border-left-color: palegreen;

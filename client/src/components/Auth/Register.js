@@ -1,18 +1,32 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 
 import { RegisterForm, Input, Button } from '../Styles';
 import { REGISTER_USER } from '../../queries';
 import Error from '../Error';
 
-export default () => {
+const Register = (props) => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConf, setPasswordConf] = useState('');
 
-  const handleSubmit = event => {
+  const clearState = () => {
+    setUsername('');
+    setEmail('');
+    setPassword('');
+    setPasswordConf('');
+  };
+
+  const handleSubmit = (event, registerUser) => {
     event.preventDefault();
+    registerUser().then(async ({ data }) => {
+      localStorage.setItem('token', data.registerUser.token);
+      await props.refetch();
+      clearState();
+      props.history.push('/');
+    });
   };
 
   const validate = () => {
@@ -26,8 +40,8 @@ export default () => {
       mutation={REGISTER_USER}
       variables={{ username, email, password }}
     >
-      {({ loading, data, error }) => (
-          <RegisterForm>
+      {(registerUser, { loading, data, error }) => (
+          <RegisterForm onSubmit={e => handleSubmit(e, registerUser)}>
             <Input 
               name="username"
               placeholder="Username"
@@ -59,7 +73,7 @@ export default () => {
           <Button
             type="submit"
             disabled={loading || !validate()}
-            onSubmit={handleSubmit}
+            onSubmit={e => handleSubmit(e, registerUser)}
           >
             Register
           </Button>
@@ -69,3 +83,5 @@ export default () => {
     </Mutation>
   );
 };
+
+export default withRouter(Register);

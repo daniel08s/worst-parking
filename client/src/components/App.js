@@ -3,6 +3,7 @@ import { Query } from 'react-apollo';
 import styled from 'styled-components';
 
 import { GET_ALL_USERS } from '../queries';
+import Error from './Error';
 
 const UserList = styled.ul`
   list-style-type: none;
@@ -20,8 +21,7 @@ const App = () => (
     <Query query={GET_ALL_USERS}>
       {({ data, loading, error }) => {
         if (loading) return <div>Loading...</div>
-        if (error) return <div>{error.message}</div>
-        console.log(data);
+        if (error) return <Error error={error}/>
         return (
           <>
             <h2>Users:</h2>
