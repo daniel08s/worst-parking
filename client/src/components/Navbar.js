@@ -40,10 +40,10 @@ const NavbarUnAuth = () => (
       <NavLink to="/search">Search</NavLink>
     </li>
     <li>
-      <NavLink to="/signin">Signin</NavLink>
+      <NavLink to="/login">Login</NavLink>
     </li>
     <li>
-      <NavLink to="/signup">Signup</NavLink>
+      <NavLink to="/register">Register</NavLink>
     </li>
   </ul>
 );

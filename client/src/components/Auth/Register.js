@@ -1,44 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 
 import { RegisterForm, Input, Button } from '../Styles';
 import { REGISTER_USER } from '../../queries';
 import Error from '../Error';
+import { useFormInput } from '../../hooks';
 
 const Register = (props) => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConf, setPasswordConf] = useState('');
-
-  const clearState = () => {
-    setUsername('');
-    setEmail('');
-    setPassword('');
-    setPasswordConf('');
-  };
+  const username = useFormInput('');
+  const email = useFormInput('');
+  const password = useFormInput('');
+  const passwordConf = useFormInput('');
 
   const handleSubmit = (event, registerUser) => {
     event.preventDefault();
     registerUser().then(async ({ data }) => {
       localStorage.setItem('token', data.registerUser.token);
       await props.refetch();
-      clearState();
       props.history.push('/');
     });
   };
 
   const validate = () => {
-    const required = username && email && password && password === passwordConf;
-    const emailValid = email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{1,})$/i);
+    const required = username.value && email.value && password.value && password.value === passwordConf.value;
+    const emailValid = email.value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{1,})$/i);
     return required && emailValid;
   };
 
   return (
     <Mutation
       mutation={REGISTER_USER}
-      variables={{ username, email, password }}
+      variables={{
+        username: username.value,
+        email: email.value,
+        password: password.value,
+      }}
     >
       {(registerUser, { loading, data, error }) => (
           <RegisterForm onSubmit={e => handleSubmit(e, registerUser)}>
@@ -46,28 +43,28 @@ const Register = (props) => {
               name="username"
               placeholder="Username"
               type="text"
-              onChange={e => setUsername(e.target.value)}
+              {...username}
               required
             />
             <Input 
               name="email"
               placeholder="Email address"
               type="email"
-              onChange={e => setEmail(e.target.value)}
+              {...email}
               required
             />
             <Input 
               type="password"
               name="password"
               placeholder="Password"
-              onChange={e => setPassword(e.target.value)}
+              {...password}
               required
             />
             <Input 
               type="password"
               name="passwordConfirmation"
               placeholder="Confirm password"
-              onChange={e => setPasswordConf(e.target.value)}
+              {...passwordConf}
               required
             />
           <Button

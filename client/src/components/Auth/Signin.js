@@ -1,36 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 
 import { SigninForm, Input, Button } from '../Styles';
 import { SIGNIN_USER } from '../../queries';
 import Error from '../Error';
+import { useFormInput } from '../../hooks';
 
 const Signin = (props) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const clearState = () => {
-    setUsername('');
-    setPassword('');
-  };
+  const username = useFormInput('');
+  const password = useFormInput('');
 
   const handleSubmit = (event, signinUser) => {
     event.preventDefault();
     signinUser().then(async ({ data }) => {
       localStorage.setItem('token', data.signinUser.token);
       await props.refetch();
-      clearState();
       props.history.push('/');
     });
   };
 
-  const validate = () => username && password ? true : false;
+  const validate = () => username.value && password.value ? true : false;
 
   return (
     <Mutation
       mutation={SIGNIN_USER}
-      variables={{ username, password }}
+      variables={{ username: username.value, password: password.value }}
     >
       {(signinUser, { loading, data, error }) => (
         <SigninForm onSubmit={e => handleSubmit(e, signinUser)}>
@@ -38,16 +33,14 @@ const Signin = (props) => {
             name="username"
             placeholder="Username"
             type="text"
-            onChange={e => setUsername(e.target.value)}
-            value={username}
+            {...username}
             required
           />
           <Input 
             type="password"
             name="password"
             placeholder="Password"
-            onChange={e => setPassword(e.target.value)}
-            value={password}
+            {...password}
             required
           />
           <Button

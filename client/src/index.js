@@ -44,7 +44,7 @@ const Root = ({ refetch, session }) => (
       <Switch>
         <Route path='/' exact component={App} />
         <Route path='/register' render={() => <Register refetch={refetch} />} />
-        <Route path='/signin' render={() => <Signin refetch={refetch} />} />
+        <Route path='/login' render={() => <Signin refetch={refetch} />} />
         <Redirect to="/" />
       </Switch>
     </Fragment>
