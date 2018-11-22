@@ -17,7 +17,7 @@ exports.resolvers = {
     getUser: async (root, { username }) => {
       return await User.findOne({ username });
     },
-    getCurrentUser: async (root, { currentUser }) => {
+    getCurrentUser: async (root, args, { currentUser }) => {
       if (!currentUser){
         return null;
       }
