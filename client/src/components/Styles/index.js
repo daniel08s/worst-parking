@@ -6,7 +6,8 @@ export const StyledSigninForm = styled.form`
   grid-template-rows: 1fr;
   grid-gap: 10px;
   justify-items: center;
-  justify-content: center;  
+  justify-content: center;
+  margin-top: 30vh;
 `;
 
 export const StyledRegisterForm = styled.form`
@@ -15,7 +16,8 @@ export const StyledRegisterForm = styled.form`
   grid-template-rows: 1fr;
   grid-gap: 10px;
   justify-items: center;
-  justify-content: center;  
+  justify-content: center;
+  margin-top: 30vh;
 `;
 
 export const StyledInput = styled.input`
@@ -123,7 +125,4 @@ export const StyledNavLi = styled.li`
     border-bottom: 2px solid white;
     padding-bottom: 5px;
   }
-`;
-
-export const StyledNavRight = styled.div`
 `;
