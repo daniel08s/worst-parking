@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 
-import { SigninForm, Input, Button } from '../Styles';
+import { StyledSigninForm, StyledInput, StyledButton } from '../Styles';
 import { SIGNIN_USER } from '../../queries';
 import Error from '../Error';
 import { useFormInput } from '../../hooks';
@@ -28,30 +28,30 @@ const Signin = (props) => {
       variables={{ username: username.value, password: password.value }}
     >
       {(signinUser, { loading, data, error }) => (
-        <SigninForm onSubmit={e => handleSubmit(e, signinUser)}>
-          <Input 
+        <StyledSigninForm onSubmit={e => handleSubmit(e, signinUser)}>
+          <StyledInput 
             name="username"
             placeholder="Username"
             type="text"
             {...username}
             required
           />
-          <Input 
+          <StyledInput 
             type="password"
             name="password"
             placeholder="Password"
             {...password}
             required
           />
-          <Button
+          <StyledButton
             type="submit"
             disabled={loading || !validate()}
             onSubmit={e => handleSubmit(e, signinUser)}
           >
             Login
-          </Button>
+          </StyledButton>
           {error &&  <Error error={error} />}
-        </SigninForm>
+        </StyledSigninForm>
       )}
     </Mutation>
   );

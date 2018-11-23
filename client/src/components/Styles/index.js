@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SigninForm = styled.form`
+export const StyledSigninForm = styled.form`
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 1fr;
@@ -9,7 +9,7 @@ export const SigninForm = styled.form`
   justify-content: center;  
 `;
 
-export const RegisterForm = styled.form`
+export const StyledRegisterForm = styled.form`
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 1fr;
@@ -18,7 +18,7 @@ export const RegisterForm = styled.form`
   justify-content: center;  
 `;
 
-export const Input = styled.input`
+export const StyledInput = styled.input`
   width: 250px;
   height: 30px;
   margin: 0 .25rem;
@@ -54,7 +54,7 @@ export const Input = styled.input`
   } */
 `;
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
   display: inline-block;
   padding: 0.3em 1.2em;
   margin: 0 0.1em 0.1em 0;
@@ -84,4 +84,46 @@ export const Button = styled.button`
   }
 `;
 
+export const StyledNavbar = styled.nav`
+  height: 80px;
+  width: 100%;
+  font-size: 20px;
+  background: transparent none repeat scroll 0% 0%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`;
 
+export const StyledNavUl = styled.ul`
+  list-style: none;
+  padding-left: 20px;
+  
+  display: flex;
+  justify-content: flex-start;
+
+  :not(:first-child) {
+    justify-content: flex-end;
+  }
+`;
+
+export const StyledNavLi = styled.li`
+  font-weight: 600;
+  color: #FFF;
+  padding-right: 20px;
+
+  a,
+  a:visited,
+  a:link,
+  a:hover,
+  a:active {
+    color: #FFF;
+    text-decoration: none;
+  }
+
+  a:hover {
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+  }
+`;
+
+export const StyledNavRight = styled.div`
+`;

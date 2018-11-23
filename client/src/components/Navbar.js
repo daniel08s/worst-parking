@@ -1,51 +1,58 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import Logout from '../components/Auth/Logout';
+import { StyledNavbar, StyledNavUl, StyledNavLi } from './Styles';
 
 const Navbar = ({ session }) => (
-  <nav>
+  <StyledNavbar>
     {session && session.getCurrentUser ? <NavbarAuth session={session} /> : <NavbarUnAuth />}
-  </nav>  
+  </StyledNavbar>  
 );
 
 const NavbarAuth = ({ session }) => (
-  <Fragment>
-    <ul>
-      <li>
+  <>
+    <StyledNavUl>
+      <StyledNavLi>
         <NavLink to="/" exact>Home</NavLink>
-      </li>
-      <li>
+      </StyledNavLi>
+    </StyledNavUl>
+    <StyledNavUl>
+      <StyledNavLi>
         <NavLink to="/search">Search</NavLink>
-      </li>
-      <li>
+      </StyledNavLi>
+      <StyledNavLi>
         <NavLink to="/post/add">Post</NavLink>
-      </li>
-      <li>
+      </StyledNavLi>
+      <StyledNavLi>
         <NavLink to="/profile">Profile</NavLink>
-      </li>
-      <li>
+      </StyledNavLi>
+      <StyledNavLi>
         <Logout />
-      </li>
-    </ul>
-  </Fragment>
+      </StyledNavLi>
+    </StyledNavUl>
+  </>
 );
 
 const NavbarUnAuth = () => (
-  <ul>
-    <li>
-      <NavLink to="/" exact>Home</NavLink>
-    </li>
-    <li>
-      <NavLink to="/search">Search</NavLink>
-    </li>
-    <li>
-      <NavLink to="/login">Login</NavLink>
-    </li>
-    <li>
-      <NavLink to="/register">Register</NavLink>
-    </li>
-  </ul>
+  <>
+    <StyledNavUl>
+      <StyledNavLi>
+        <NavLink to="/" exact>Home</NavLink>
+      </StyledNavLi>
+    </StyledNavUl>
+    <StyledNavUl>
+      <StyledNavLi>
+        <NavLink to="/search">Search</NavLink>
+      </StyledNavLi>
+      <StyledNavLi>
+        <NavLink to="/login">Login</NavLink>
+      </StyledNavLi>
+      <StyledNavLi>
+        <NavLink to="/register">Register</NavLink>
+      </StyledNavLi>
+    </StyledNavUl>
+  </>
 );
 
 export default Navbar;

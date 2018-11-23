@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 
-import { RegisterForm, Input, Button } from '../Styles';
+import { StyledRegisterForm, StyledInput, StyledButton } from '../Styles';
 import { REGISTER_USER } from '../../queries';
 import Error from '../Error';
 import { useFormInput } from '../../hooks';
@@ -38,44 +38,44 @@ const Register = (props) => {
       }}
     >
       {(registerUser, { loading, data, error }) => (
-          <RegisterForm onSubmit={e => handleSubmit(e, registerUser)}>
-            <Input 
+          <StyledRegisterForm onSubmit={e => handleSubmit(e, registerUser)}>
+            <StyledInput 
               name="username"
               placeholder="Username"
               type="text"
               {...username}
               required
             />
-            <Input 
+            <StyledInput 
               name="email"
               placeholder="Email address"
               type="email"
               {...email}
               required
             />
-            <Input 
+            <StyledInput 
               type="password"
               name="password"
               placeholder="Password"
               {...password}
               required
             />
-            <Input 
+            <StyledInput 
               type="password"
               name="passwordConfirmation"
               placeholder="Confirm password"
               {...passwordConf}
               required
             />
-          <Button
+          <StyledButton
             type="submit"
             disabled={loading || !validate()}
             onSubmit={e => handleSubmit(e, registerUser)}
           >
             Register
-          </Button>
+          </StyledButton>
           {error &&  <Error error={error} />}
-        </RegisterForm>
+        </StyledRegisterForm>
       )}
     </Mutation>
   );
