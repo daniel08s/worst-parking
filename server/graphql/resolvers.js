@@ -33,16 +33,22 @@ exports.resolvers = {
     getRandomCar: async (root, args) => {
       return await Car.findOne();
     },
-    searchCar: async (root, { searchTerm }) => {
+    searchCars: async (root, { searchTerm }) => {
       if (searchTerm) {
-        const searchResults = await Car.find({
-          $text: { $search: searchTerm },
-        },
-        {
-          score: { $meta: "textScore" },
-        }).sort({
-          score: { $meta: "textScore" },
-        });
+        const searchResults = await Car
+          .find(
+            {
+              $text: { $search: searchTerm },
+            },
+            {
+              score: { $meta: "textScore" },
+            }
+          )
+          .sort(
+            {
+              score: { $meta: "textScore" },
+            }
+          );
         return searchResults;
       } else {
         const cars = await Car.find().sort({ likes: 'desc', createdDate: 'desc' });

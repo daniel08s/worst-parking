@@ -33,9 +33,9 @@ export const GET_RANDOM_CAR = gql`
   ${carFragments.car}
 `;
 
-export const SEARCH_CAR = gql`
-  query {
-    searchCar {
+export const SEARCH_CARS = gql`
+  query($searchTerm: String) {
+    searchCars(searchTerm: $searchTerm) {
       ...CompleteCar
     }
   }

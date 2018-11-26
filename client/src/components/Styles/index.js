@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledSigninForm = styled.form`
   display: grid;
@@ -125,4 +125,60 @@ export const StyledNavLi = styled.li`
     border-bottom: 2px solid white;
     padding-bottom: 5px;
   }
+`;
+
+export const StyledSearch = styled.div`
+  display: grid;
+  grid-template-areas:
+    '. . . . .',
+    'c c c c c ';
+  justify-items: center;
+  justify-content: center;
+  margin-top: 100px;
+
+  input[type="search"] {
+    width: 250px;
+    height: 30px;
+    margin: 0 .25rem;
+    min-width: 125px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    align-self: center;
+    justify-self: center;
+    padding-left: 3px;
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    color: white;
+  }
+
+`;
+
+export const CarCard = styled.div`
+  /* background: rgb(255, 255, 255) none repeat scroll 0% 0% !important; */
+  background: rgb(30, 30, 30) none repeat scroll 0% 0%;
+  border-radius: 5px;
+  padding: 22px 22px 16px;
+  width: 250px;
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px !important; */
+  box-shadow: rgb(0, 0, 0) 0px 12px 30px;
+  margin-top: 50px;
+  color: white;
+
+  .car-image {
+    min-height: 250px;
+    width: 100%;
+  }
+
+  ${props => props.multi && css`
+    margin: 50px 10px 0px 10px;
+  `}
+`;
+
+export const CarCardLineWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 `;

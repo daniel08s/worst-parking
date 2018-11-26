@@ -4,13 +4,14 @@ export const carFragments = {
   car: gql`
     fragment CompleteCar on Car {
       _id
-      name
+      plateNo
       imageUrl
-      category
-      description
-      instructions
-      createdDate
+      nationality
+      location
+      brand
       likes
+      tags
+      createdDate
       username
     }
   `,

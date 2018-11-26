@@ -40,4 +40,8 @@ const CarSchema = new Schema({
   }
 });
 
+CarSchema.index({
+  '$**': 'text'
+});
+
 module.exports = mongoose.model('Car', CarSchema);

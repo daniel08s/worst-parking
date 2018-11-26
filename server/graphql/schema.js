@@ -35,7 +35,7 @@ type Query {
   getAllCars: [Car]
   getCar(_id: ID!): Car
   getRandomCar: Car
-  searchCar(searchTerm: String!): Car
+  searchCars(searchTerm: String): [Car]
   getUserCars(username: String!): [Car]
 }
 
