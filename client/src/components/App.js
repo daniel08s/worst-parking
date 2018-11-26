@@ -15,15 +15,18 @@ const StyledApp = styled.div`
 
 const Spotlight = styled.div`
   grid-area: s;
-  background: rgb(255, 255, 255) none repeat scroll 0% 0% !important;
-  border-radius: 4px !important;
-  padding: 32px 32px 24px !important;
-  width: 441px !important;
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px !important;
+  /* background: rgb(255, 255, 255) none repeat scroll 0% 0% !important; */
+  background: rgb(30, 30, 30) none repeat scroll 0% 0%;
+  border-radius: 5px;
+  padding: 32px 32px 24px;
+  width: 440px;
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px !important; */
+  box-shadow: rgb(0, 0, 0) 0px 16px 40px;
   margin-top: 100px;
+  color: white;
 
   .spotlight-image {
-    height: 45vh;
+    min-height: 325px;
     width: 100%;
   }
 `;
