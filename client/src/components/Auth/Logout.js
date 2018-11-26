@@ -2,6 +2,8 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { ApolloConsumer } from 'react-apollo';
 
+import { LogoutButton } from '../Styles';
+
 const handleLogout = (client, history) => {
   localStorage.setItem('token', '');
   client.resetStore();
@@ -12,7 +14,9 @@ const Logout = ({ history }) => (
   <ApolloConsumer>
     {client => {
       return (
-        <button onClick={() => handleLogout(client, history)}>Logout</button>
+        <LogoutButton onClick={() => handleLogout(client, history)}>
+          Logout
+        </LogoutButton>
       );
     }}
   </ApolloConsumer>

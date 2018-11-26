@@ -182,3 +182,13 @@ export const CarCardLineWrapper = styled.div`
   justify-content: center;
   padding: 10px;
 `;
+
+export const LogoutButton = styled.div`
+  cursor:pointer;
+  border: none;
+
+  :hover {
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+  }
+`;
