@@ -30,6 +30,9 @@ exports.resolvers = {
     getCar: async (root, { _id }) => {
       return await Car.findById({ _id });
     },
+    getRandomCar: async (root, args) => {
+      return await Car.findOne();
+    },
     searchCar: async (root, { searchTerm }) => {
       if (searchTerm) {
         const searchResults = await Car.find({

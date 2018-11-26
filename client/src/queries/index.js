@@ -22,6 +22,22 @@ export const GET_CURRENT_USER = gql`
   }
 `;
 
+export const GET_RANDOM_CAR = gql`
+  query {
+    getRandomCar {
+      _id
+      plateNo
+      imageUrl
+      nationality
+      location
+      brand
+      likes
+      tags
+      createdDate
+    }
+  }
+`;
+
 export const SIGNIN_USER = gql`
   mutation(
     $username: String!

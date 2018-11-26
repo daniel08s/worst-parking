@@ -13,14 +13,15 @@ type User {
 
 type Car {
   _id: ID
-  plateNo: String!
+  plateNo: String
   imageUrl: String!
   nationality: String!
-  location: String!
+  location: String
   brand: String!
   likes: Int
   tags: String
   createdDate: String
+  username: String!
 }
 
 type Token {
@@ -33,6 +34,7 @@ type Query {
   getCurrentUser: User
   getAllCars: [Car]
   getCar(_id: ID!): Car
+  getRandomCar: Car
   searchCar(searchTerm: String!): Car
   getUserCars(username: String!): [Car]
 }
