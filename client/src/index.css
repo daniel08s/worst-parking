@@ -19,6 +19,7 @@ body {
   z-index: -2 !important;
   background-image: url('./images/carpark1.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 code {
