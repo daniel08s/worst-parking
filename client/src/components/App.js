@@ -10,7 +10,8 @@ const StyledApp = styled.div`
   grid-template-areas:
     ". . . ." 
     ". s . ." 
-    ". s . .";
+    ". s . ."
+    ". m . .";
 `;
 
 const Spotlight = styled.div`
@@ -19,16 +20,25 @@ const Spotlight = styled.div`
   background: rgb(30, 30, 30) none repeat scroll 0% 0%;
   border-radius: 5px;
   padding: 32px 32px 24px;
-  width: 440px;
+  width: 400px;
   /* box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px !important; */
   box-shadow: rgb(0, 0, 0) 0px 16px 40px;
   margin-top: 100px;
   color: white;
 
   .spotlight-image {
-    min-height: 325px;
+    min-height: 320px;
     width: 100%;
   }
+`;
+
+const Slogan = styled.div`
+  grid-area: m;
+  color: #FFF;
+  padding: 10px;
+  text-shadow: 3px 3px 4px #000;
+  font-weight: 600; 
+  text-decoration: snow;
 `;
 
 const App = () => (
@@ -39,12 +49,18 @@ const App = () => (
         if (error) return <div>{error.message}</div>
         if (!data.getRandomPost) return <div>null</div>
         return (
+          <>
           <Spotlight>
-            <div
-              className="spotlight-image"
-              style={{ background: `url(${data.getRandomPost.imageUrl}) center center / cover no-repeat` }}  
+            <a
+              href={data.getRandomPost.imageUrl}
+              target='_blank'
+              rel='noopener noreferrer'
             >
-            </div>
+              <div 
+                className="spotlight-image"
+                style={{ background: `url(${data.getRandomPost.imageUrl}) center center / cover no-repeat` }}  
+              />
+            </a>
             <div className="spotlight-header">
               <h2>
                 <strong>{data.getRandomPost.description}</strong>
@@ -62,6 +78,10 @@ const App = () => (
               </p>
             </div>
           </Spotlight>
+          <Slogan>
+            Find the best pictures of the <strong>worst parkings</strong>!
+          </Slogan>
+          </>
         );
       }}
     </Query>
