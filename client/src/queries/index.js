@@ -20,6 +20,11 @@ export const GET_CURRENT_USER = gql`
       username
       email
       joinDate
+      favorites {
+        _id
+        description
+        imageUrl
+      }
     }
   }
 `;

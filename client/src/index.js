@@ -16,6 +16,7 @@ import Register from './components/Auth/Register';
 import Signin from './components/Auth/Signin';
 import Search from './components/Post/Search';
 import CreatePost from './components/Post/CreatePost';
+import Profile from './components/Profile/Profile';
 import withSession from './components/withSession';
 import Navbar from './components/Navbar';
 
@@ -49,6 +50,10 @@ const Root = ({ refetch, session }) => (
         <Route
           path="/post/add"
           render={() => <CreatePost refetch={refetch} session={session} />}
+        />
+        <Route
+          path="/profile"
+          render={() => <Profile session={session} />}
         />
         <Route path='/register' render={() => <Register refetch={refetch} />} />
         <Route path='/login' render={() => <Signin refetch={refetch} />} />
