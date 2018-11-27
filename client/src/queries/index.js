@@ -71,3 +71,26 @@ export const REGISTER_USER = gql`
     }
   }
 `;
+
+export const ADD_POST = gql`
+  mutation(
+    $imageUrl: String!
+    $nationality: String
+    $description: String
+    $brand: String
+    $tags: String
+    $username: String!
+  ) {
+    addPost(
+      imageUrl: $imageUrl
+      nationality: $nationality
+      description: $description
+      brand: $brand
+      tags: $tags
+      username: $username
+    ) {
+      ...CompletePost
+    }
+  }
+  ${PostFragments.Post}
+`;
