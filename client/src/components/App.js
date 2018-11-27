@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Query } from 'react-apollo';
 
-import { GET_RANDOM_CAR } from '../queries';
+import { GET_RANDOM_POST } from '../queries';
 
 const StyledApp = styled.div`
   padding-left: 20px;
@@ -33,32 +33,32 @@ const Spotlight = styled.div`
 
 const App = () => (
   <StyledApp className="App">
-    <Query query={GET_RANDOM_CAR} >
+    <Query query={GET_RANDOM_POST} >
       {({ data, loading, error }) => {
-        console.log(data);
         if (loading) return <div>Loading...</div>
         if (error) return <div>{error.message}</div>
+        if (!data.getRandomPost) return <div>null</div>
         return (
           <Spotlight>
             <div
               className="spotlight-image"
-              style={{ background: `url(${data.getRandomCar.imageUrl}) center center / cover no-repeat` }}  
+              style={{ background: `url(${data.getRandomPost.imageUrl}) center center / cover no-repeat` }}  
             >
             </div>
             <div className="spotlight-header">
               <h2>
-                <strong>{data.getRandomCar.plateNo}</strong>
+                <strong>{data.getRandomPost.description}</strong>
               </h2>
               <h5>
-                <strong>{data.getRandomCar.nationality}</strong>
+                <strong>{data.getRandomPost.nationality}</strong>
               </h5>
               <p>
                 Created by <strong>
-                {data.getRandomCar.username}
+                {data.getRandomPost.username}
                 </strong>
               </p>
               <p>
-                {data.getRandomCar.likes} <span role="img" aria-label="Heart">❤</span>
+                {data.getRandomPost.likes} <span role="img" aria-label="Heart">❤</span>
               </p>
             </div>
           </Spotlight>

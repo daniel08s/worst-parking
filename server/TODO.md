@@ -8,7 +8,7 @@
   - Join date
   - Favorites
 
-- Car:
+- Post:
   - License Plate
   - Nationality
   - Location
@@ -20,20 +20,20 @@
 
 ### **Schema**
 - User
-- Car
+- Post
 - Token
 - Query
   - getUser
   - getAllUsers
   - getCurrentUser
-  - getAllCars
-  - searchCars
-  - getUserCars
+  - getAllPosts
+  - searchPosts
+  - getUserPosts
 - Mutation
   - registerUser
   - signinUser
-  - addCar
-  - likeCar
-  - unlikeCar
-  - updateUserCar
-  - deleteUserCar
+  - addPost
+  - likePost
+  - unlikePost
+  - updateUserPost
+  - deleteUserPost

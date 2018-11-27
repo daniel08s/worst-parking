@@ -156,7 +156,7 @@ export const StyledSearch = styled.div`
 
 `;
 
-export const CarCard = styled.div`
+export const PostCard = styled.div`
   /* background: rgb(255, 255, 255) none repeat scroll 0% 0% !important; */
   background: rgb(30, 30, 30) none repeat scroll 0% 0%;
   border-radius: 5px;
@@ -167,7 +167,7 @@ export const CarCard = styled.div`
   margin-top: 50px;
   color: white;
 
-  .car-image {
+  .post-image {
     min-height: 250px;
     width: 100%;
   }
@@ -177,7 +177,7 @@ export const CarCard = styled.div`
   `}
 `;
 
-export const CarCardLineWrapper = styled.div`
+export const PostCardLineWrapper = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px;

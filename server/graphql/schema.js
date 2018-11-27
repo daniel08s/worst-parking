@@ -8,16 +8,15 @@ type User {
   email: String!
   password: String!
   joinDate: String
-  favorites: [Car]
+  favorites: [Post]
 }
 
-type Car {
+type Post {
   _id: ID
-  plateNo: String
   imageUrl: String!
-  nationality: String!
-  location: String
-  brand: String!
+  nationality: String
+  description: String
+  brand: String
   likes: Int
   tags: String
   createdDate: String
@@ -32,11 +31,11 @@ type Query {
   getAllUsers: [User]
   getUser(username: String!): User
   getCurrentUser: User
-  getAllCars: [Car]
-  getCar(_id: ID!): Car
-  getRandomCar: Car
-  searchCars(searchTerm: String): [Car]
-  getUserCars(username: String!): [Car]
+  getAllPosts: [Post]
+  getPost(_id: ID!): Post
+  getRandomPost: Post
+  searchPosts(searchTerm: String): [Post]
+  getUserPosts(username: String!): [Post]
 }
 
 type Mutation {
@@ -51,39 +50,38 @@ type Mutation {
     password: String!,
   ): Token
 
-  addCar(
-    plateNo: String,
+  addPost(
     imageUrl: String!,
     nationality: String,
-    location: String,
+    description: String,
     brand: String,
     tags: String,
     username: String!,
-  ): Car
+  ): Post
 
-  likeCar(
+  likePost(
     _id: ID!,
     username: String!,
-  ): Car
+  ): Post
 
-  unlikeCar(
+  unlikePost(
     _id: ID!,
     username: String!
-  ): Car
+  ): Post
 
-  updateUserCar(
+  updateUserPost(
     _id: ID!,
-    plateNo: String,
     imageUrl: String!,
     nationality: String,
-    location: String,
+    description: String,
     brand: String,
     tags: String,
-  ): Car
+    username: String!,
+  ): Post
 
-  deleteUserCar(
+  deleteUserPost(
     _id: ID!,
-  ): Car
+  ): Post
 }
 
 `;

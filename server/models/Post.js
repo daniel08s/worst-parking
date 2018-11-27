@@ -2,11 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const CarSchema = new Schema({
-  plateNo: {
-    type: String,
-    required: true,
-  },
+const PostSchema = new Schema({
   imageUrl: {
     type: String,
     required: true
@@ -15,13 +11,11 @@ const CarSchema = new Schema({
     type: String,
     required: true,
   },
-  location: {
+  description: {
     type: String,
-    required: true,
   },
   brand: {
     type: String,
-    required: true,
   },
   likes: {
     type: Number,
@@ -40,8 +34,8 @@ const CarSchema = new Schema({
   }
 });
 
-CarSchema.index({
+PostSchema.index({
   '$**': 'text'
 });
 
-module.exports = mongoose.model('Car', CarSchema);
+module.exports = mongoose.model('Post', PostSchema);

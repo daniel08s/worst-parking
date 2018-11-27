@@ -1,13 +1,12 @@
 import { gql } from 'apollo-boost';
 
-export const carFragments = {
-  car: gql`
-    fragment CompleteCar on Car {
+export const PostFragments = {
+  Post: gql`
+    fragment CompletePost on Post {
       _id
-      plateNo
       imageUrl
       nationality
-      location
+      description
       brand
       likes
       tags
@@ -16,7 +15,7 @@ export const carFragments = {
     }
   `,
   like: gql`
-    fragment LikeCar on Car {
+    fragment LikePost on Post {
       _id
       likes
     }

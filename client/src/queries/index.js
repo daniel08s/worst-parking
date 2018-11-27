@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 
-import { carFragments } from './fragments';
+import { PostFragments } from './fragments';
 
 export const GET_ALL_USERS = gql`
   query {
@@ -24,22 +24,22 @@ export const GET_CURRENT_USER = gql`
   }
 `;
 
-export const GET_RANDOM_CAR = gql`
+export const GET_RANDOM_POST = gql`
   query {
-    getRandomCar {
-      ...CompleteCar
+    getRandomPost {
+      ...CompletePost
     }
   }
-  ${carFragments.car}
+  ${PostFragments.Post}
 `;
 
-export const SEARCH_CARS = gql`
+export const SEARCH_POSTS = gql`
   query($searchTerm: String) {
-    searchCars(searchTerm: $searchTerm) {
-      ...CompleteCar
+    searchPosts(searchTerm: $searchTerm) {
+      ...CompletePost
     }
   }
-  ${carFragments.car}
+  ${PostFragments.Post}
 `;
 
 export const SIGNIN_USER = gql`

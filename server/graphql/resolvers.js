@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 const User = require('../models/User');
-const Car = require('../models/Car');
+const Post = require('../models/Post');
 
 const createToken = (user, secret, expiresIn) => {
   const { username, email } = user;
@@ -24,18 +24,19 @@ exports.resolvers = {
       const user = await User.findOne({ username: currentUser.username });
       return user;
     },
-    getAllCars: async (root, args) => {
-      return await Car.find();
+    getAllPosts: async (root, args) => {
+      return await Post.find();
     },
-    getCar: async (root, { _id }) => {
-      return await Car.findById({ _id });
+    getPost: async (root, { _id }) => {
+      return await Post.findById({ _id });
     },
-    getRandomCar: async (root, args) => {
-      return await Car.findOne();
+    getRandomPost: async (root, args) => {
+      const [post] = await Post.aggregate().sample(1);
+      return post;
     },
-    searchCars: async (root, { searchTerm }) => {
+    searchPosts: async (root, { searchTerm }) => {
       if (searchTerm) {
-        const searchResults = await Car
+        const searchResults = await Post
           .find(
             {
               $text: { $search: searchTerm },
@@ -51,12 +52,12 @@ exports.resolvers = {
           );
         return searchResults;
       } else {
-        const cars = await Car.find().sort({ likes: 'desc', createdDate: 'desc' });
-        return cars;
+        const Posts = await Post.find().sort({ likes: 'desc', createdDate: 'desc' });
+        return Posts;
       }
     },
-    getUserCars: async (root, { username }) => {
-      return await Car.find({ username }).sort({ createdDate: 'desc' });
+    getUserPosts: async (root, { username }) => {
+      return await Post.find({ username }).sort({ createdDate: 'desc' });
     },
   },
   Mutation: {
@@ -83,24 +84,23 @@ exports.resolvers = {
       }
       return { token: createToken(user, process.env.SECRET, '1hr') };
     },
-    addCar: async (root, { plateNo, imageUrl, nationality, location, brand, tags, username }) => {
-      const car = await Car.findOne({ imageUrl });
-      if (car) {
+    addPost: async (root, { imageUrl, nationality, description, brand, tags, username }) => {
+      const post = await Post.findOne({ imageUrl });
+      if (post) {
         throw new Error('Duplicated images are not allowed.')
       }
-      const newCar = await new Car({
-        plateNo,
+      const newPost = await new Post({
         imageUrl,
         nationality,
-        location,
+        description,
         brand,
         tags,
         username,
       }).save();
-      return newCar;
+      return newPost;
     },
-    likeCar: async (root, { _id, username }) => {
-      const car = await Car.findOneAndUpdate(
+    likePost: async (root, { _id, username }) => {
+      const post = await Post.findOneAndUpdate(
         { _id },
         { $inc: { likes: 1 } },
       );
@@ -108,10 +108,10 @@ exports.resolvers = {
         { username },
         { $addToSet: { favorites: _id } },
       );
-      return car;
+      return post;
     },
-    unlikeCar: async (root, { _id, username }) => {
-      const car = await Car.findOneAndUpdate(
+    unlikePost: async (root, { _id, username }) => {
+      const post = await Post.findOneAndUpdate(
         { _id },
         { $inc: { likes: -1 } },
       );
@@ -119,18 +119,18 @@ exports.resolvers = {
         { username },
         { $pull: { favorites: _id } },
       );
-      return car;
+      return post;
     },
-    updateUserCar: async (root, { _id, plateNo, imageUrl, nationality, location, brand, tags }) => {
-      const car = await Car.findOneAndUpdate(
+    updateUserPost: async (root, { _id, imageUrl, nationality, description, brand, tags }) => {
+      const post = await Post.findOneAndUpdate(
         { _id },
-        { $set: { plateNo, imageUrl, nationality, location, brand, tags } },
+        { $set: { imageUrl, nationality, description, brand, tags } },
         { new: true },
       );
-      return car;
+      return post;
     },
-    deleteUserCar: async (root, { _id }) => {
-      await Car.findOneAndRemove({ _id });
+    deleteUserPost: async (root, { _id }) => {
+      await Post.findOneAndRemove({ _id });
     },
   }
 };

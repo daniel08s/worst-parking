@@ -14,7 +14,7 @@ import './index.css';
 import App from './components/App';
 import Register from './components/Auth/Register';
 import Signin from './components/Auth/Signin';
-import Search from './components/Car/Search';
+import Search from './components/Post/Search';
 import withSession from './components/withSession';
 import Navbar from './components/Navbar';
 
