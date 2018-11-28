@@ -25,7 +25,7 @@ exports.resolvers = {
       return user;
     },
     getAllPosts: async (root, args) => {
-      return await Post.find();
+      return await Post.find().sort({ createdDate: 'desc' });
     },
     getPost: async (root, { _id }) => {
       return await Post.findById({ _id });

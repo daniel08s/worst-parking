@@ -16,6 +16,7 @@ import Register from './components/Auth/Register';
 import Signin from './components/Auth/Signin';
 import Search from './components/Post/Search';
 import CreatePost from './components/Post/CreatePost';
+import Feed from './components/Post/Feed';
 import Profile from './components/Profile/Profile';
 import withSession from './components/withSession';
 import Navbar from './components/Navbar';
@@ -47,6 +48,10 @@ const Root = ({ refetch, session }) => (
       <Switch>
         <Route path='/' exact component={App} />
         <Route path="/search" component={Search} />
+        <Route
+          path="/feed"
+          render={() => <Feed session={session} />}
+        />
         <Route
           path="/post/add"
           render={() => <CreatePost refetch={refetch} session={session} />}

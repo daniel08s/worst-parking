@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 
@@ -35,6 +35,7 @@ const Signin = (props) => {
             type="text"
             {...username}
             required
+            autoFocus
           />
           <StyledInput 
             type="password"

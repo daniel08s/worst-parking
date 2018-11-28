@@ -192,3 +192,32 @@ export const LogoutButton = styled.div`
     padding-bottom: 5px;
   }
 `;
+
+
+export const StyledContainer = styled.div`
+  padding-left: 20px;
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  margin-top: 100px;
+  border-radius: 5px;
+  color: white;
+  height: 700px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-bottom: 20px;
+
+  ul {
+    list-style: none;
+    padding: 0px;
+  }
+`;
+
+export const StyledProfile = styled.div`
+  background: rgb(30, 30, 30) none repeat scroll 0% 0%;
+  border-radius: 5px;
+  padding: 32px 32px 24px;
+  width: 400px;
+  box-shadow: rgb(0, 0, 0) 0px 16px 40px;
+  color: white;
+`;

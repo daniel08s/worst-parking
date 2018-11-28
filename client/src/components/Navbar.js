@@ -19,10 +19,13 @@ const NavbarAuth = ({ session }) => (
     </StyledNavUl>
     <StyledNavUl>
       <StyledNavLi>
-        <NavLink to="/search">Search</NavLink>
+        <NavLink to="/post/add">Post</NavLink>
       </StyledNavLi>
       <StyledNavLi>
-        <NavLink to="/post/add">Post</NavLink>
+        <NavLink to="/feed">Feed</NavLink>
+      </StyledNavLi>
+      <StyledNavLi>
+        <NavLink to="/search">Search</NavLink>
       </StyledNavLi>
       <StyledNavLi>
         <NavLink to="/profile">Profile</NavLink>

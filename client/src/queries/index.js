@@ -29,6 +29,15 @@ export const GET_CURRENT_USER = gql`
   }
 `;
 
+export const GET_ALL_POSTS = gql`
+  query {
+    getAllPosts {
+      ...CompletePost
+    }
+  }
+  ${PostFragments.Post}
+`;
+
 export const GET_RANDOM_POST = gql`
   query {
     getRandomPost {

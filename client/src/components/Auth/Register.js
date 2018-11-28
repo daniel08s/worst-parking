@@ -45,6 +45,7 @@ const Register = (props) => {
               type="text"
               {...username}
               required
+              autoFocus
             />
             <StyledInput 
               name="email"
