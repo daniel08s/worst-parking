@@ -199,12 +199,10 @@ export const StyledContainer = styled.div`
   display: grid;
   justify-items: center;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 5vh;
   border-radius: 5px;
   color: white;
-  height: 700px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  height: 80vh;
   padding-bottom: 20px;
 
   ul {
@@ -216,7 +214,7 @@ export const StyledContainer = styled.div`
 export const StyledProfile = styled.div`
   background: rgb(30, 30, 30) none repeat scroll 0% 0%;
   border-radius: 5px;
-  padding: 32px 32px 24px;
+  padding: 5px 32px 24px;
   width: 400px;
   box-shadow: rgb(0, 0, 0) 0px 16px 40px;
   color: white;

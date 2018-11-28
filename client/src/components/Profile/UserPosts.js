@@ -35,7 +35,6 @@ const UserPosts = ({ username }) => {
         {({ loading, data, error }) => {
           if (loading) return <div>Loading...</div>;
           if (error) return <div>Error</div>;
-          console.log(data);
           return (
             <>
               {data.getUserPosts.map(post => (

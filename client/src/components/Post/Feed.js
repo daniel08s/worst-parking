@@ -2,6 +2,8 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { GoHeart } from 'react-icons/go'
 import styled from 'styled-components';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
 import withAuth from '../withAuth';
 import { GET_ALL_POSTS } from '../../queries';
@@ -61,6 +63,7 @@ const Feed = ({ session }) => {
 
   return (
     <StyledContainer>
+    <PerfectScrollbar>
       <Query query={ GET_ALL_POSTS } >
         {({ loading, data, error }) => {
           if (loading) return <div>Loading...</div>;
@@ -86,6 +89,7 @@ const Feed = ({ session }) => {
           );
         }}
       </Query>
+      </PerfectScrollbar>
     </StyledContainer>
   );
 };

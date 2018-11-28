@@ -10,7 +10,7 @@ const formatDate = date => {
 const UserInfo = ({ session }) => {
 
   return (
-    <div>
+    <div style={{ margin: 0}} >
       <h1 className="main-title">User info</h1>
       <p>Username: {session.getCurrentUser.username}</p>
       <p>Email: {session.getCurrentUser.email}</p>

@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Query } from 'react-apollo';
+import PerfectScrollbar from 'react-perfect-scrollbar';
+import 'react-perfect-scrollbar/dist/css/styles.css';
 
 import { GET_RANDOM_POST } from '../queries';
 
@@ -12,6 +14,7 @@ const StyledApp = styled.div`
     ". s . ." 
     ". s . ."
     ". m . .";
+  height: 70vh;
 `;
 
 const Spotlight = styled.div`
@@ -19,15 +22,15 @@ const Spotlight = styled.div`
   /* background: rgb(255, 255, 255) none repeat scroll 0% 0% !important; */
   background: rgb(30, 30, 30) none repeat scroll 0% 0%;
   border-radius: 5px;
-  padding: 32px 32px 24px;
+  padding: 32px 32px 10px;
   width: 400px;
   /* box-shadow: rgba(0, 0, 0, 0.12) 0px 16px 40px !important; */
   box-shadow: rgb(0, 0, 0) 0px 16px 40px;
-  margin-top: 100px;
+  margin-top: 7vh;
   color: white;
 
   .spotlight-image {
-    min-height: 320px;
+    min-height: 30vh;
     width: 100%;
   }
 `;
@@ -42,6 +45,7 @@ const Slogan = styled.div`
 `;
 
 const App = () => (
+  <PerfectScrollbar>
   <StyledApp className="App">
     <Query query={GET_RANDOM_POST} >
       {({ data, loading, error }) => {
@@ -86,6 +90,7 @@ const App = () => (
       }}
     </Query>
   </StyledApp>
+  </PerfectScrollbar>
 );
 
 export default App;
