@@ -16,7 +16,7 @@ const UserInfo = ({ session }) => {
       <p>Email: {session.getCurrentUser.email}</p>
       <p>Join Date: {formatDate(session.getCurrentUser.joinDate)}</p>
       <ul>
-        <h3>{session.getCurrentUser.username}'s favorites</h3>
+        <h2>Your favorites:</h2>
         {session.getCurrentUser.favorites.map(favorite => 
           <li key={favorite._id}>
             <Link to={`/post/${favorite._id}`}><p>{favorite.description}</p></Link>
@@ -24,9 +24,8 @@ const UserInfo = ({ session }) => {
         )}
         {!session.getCurrentUser.favorites.length && (
           <p>
-            <strong>You have no favorites. Go add some! 
-              <span role="img" aria-label="SmileyFaceSmileyEyes">😄</span>
-            </strong>
+            You have no favorites. <strong>Go add some!</strong>
+            <span role="img" aria-label="SmileyFaceSmileyEyes">😄</span>
           </p>
         )}
       </ul>

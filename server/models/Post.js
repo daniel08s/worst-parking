@@ -24,7 +24,7 @@ const PostSchema = new Schema({
   tags: {
     type: String,
   },
-  submitDate: {
+  createdDate: {
     type: Date,
     default: Date.now,
   },

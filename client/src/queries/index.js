@@ -38,6 +38,15 @@ export const GET_RANDOM_POST = gql`
   ${PostFragments.Post}
 `;
 
+export const GET_USER_POSTS = gql`
+  query($username: String!) {
+    getUserPosts(username: $username) {
+      ...CompletePost
+    }
+  }
+  ${PostFragments.Post}
+`;
+
 export const SEARCH_POSTS = gql`
   query($searchTerm: String) {
     searchPosts(searchTerm: $searchTerm) {
