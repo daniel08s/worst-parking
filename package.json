@@ -4,7 +4,7 @@
   "description": "Worst Parking App",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\""
+    "start": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\"",
     "server": "npm start --prefix server nodemon index.js",
     "client": "npm start --prefix client react-scripts start",
     "dev": "concurrently --names \"server,client\" \"npm run server --silent\" \"npm run client --silent\""
