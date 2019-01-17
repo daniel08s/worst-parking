@@ -11,8 +11,8 @@
   },
   "author": "DNS",
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "concurrently": "^4.1.0"
-  }
+  },
+  "devDependencies": {}
 }
